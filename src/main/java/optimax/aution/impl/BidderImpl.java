@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package auction.impl;
+package optimax.aution.impl;
 
-import auction.BasicBidScheme;
-import auction.BidScheme;
-import auction.Bidder;
+import optimax.scheme.BasicBidScheme;
+import optimax.scheme.BidScheme;
+import optimax.aution.Bidder;
 import org.springframework.stereotype.Service;
 
 /**

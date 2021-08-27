@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package auction;
+package optimax.scheme;
+
+import optimax.play.Player;
 
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
