@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class BidderImpl implements Bidder {
 
-    BidScheme scheme;
+    private BidScheme scheme;
 
     @Override
     public void init(int quantity, int cash) {

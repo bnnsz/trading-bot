@@ -11,10 +11,9 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- *
  * @author Obinna Asuzu
  */
-public abstract class BidScheme {
+public abstract class BidScheme implements Scheme<BidScheme> {
 
     protected Player me;
     protected Player other;
@@ -76,69 +75,69 @@ public abstract class BidScheme {
         return bid;
     }
 
-    final int deligateBid() {
+    public final int deligateBid() {
         return next.map(scheme -> scheme.getNexBid())
                 .orElse(0);
     }
 
     //Helper methods
-    protected int prevRound() {
+    public int prevRound() {
         return round.get() - 1;
     }
 
-    protected int currentRound() {
+    public int currentRound() {
         return round.get();
     }
 
-    boolean wonLast() {
+    public boolean wonLast() {
         return prevBid(me) > prevBid(other);
     }
 
-    boolean drawLast() {
+    public boolean drawLast() {
         return prevBid(me) == prevBid(other);
     }
 
-    boolean wonOrDrawLast() {
+    public boolean wonOrDrawLast() {
         return prevBid(me) >= prevBid(other);
     }
 
-    boolean hasMoreFund() {
+    public boolean hasMoreFund() {
         return me.getBalance() > other.getBalance();
     }
-    
-    boolean isLeading(){
-        return me.getQu() > other.getQu();
-    }
-    
-    boolean isLeadingOrDraw(){
+
+    public boolean isLeading() {
         return me.getQu() > other.getQu();
     }
 
-    int prevBid(Player p) {
+    public boolean isLeadingOrDraw() {
+        return me.getQu() > other.getQu();
+    }
+
+    public int prevBid(Player p) {
         return p.getBid(prevRound());
     }
 
-    int increaseBid(Player p, int increase) {
+    public int increaseBid(Player p, int increase) {
         return prevBid(p) + increase;
     }
 
-    int increaseBid(Player p) {
+    public int increaseBid(Player p) {
         return prevBid(p) + 1;
     }
 
-    int prevWinnerBid() {
+    public int prevWinnerBid() {
         return Math.max(prevBid(me), prevBid(other));
     }
 
-    boolean hasReachedTarget(Player p) {
+    public boolean hasReachedTarget(Player p) {
         return p.getQu() >= target;
     }
 
-    boolean isLastRound() {
+    public boolean isLastRound() {
         return target - Math.max(me.getQu(), other.getQu()) <= 2;
     }
-    
-    boolean isLastRound(Player p) {
+
+    public boolean isLastRound(Player p) {
         return target - p.getQu() <= 2;
     }
 
