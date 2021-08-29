@@ -8,7 +8,6 @@ package optimax.aution.services.impl;
 import optimax.aution.services.BidScheme;
 import optimax.aution.services.GameContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.Ordered;
 import org.springframework.stereotype.Service;
 
 /**
