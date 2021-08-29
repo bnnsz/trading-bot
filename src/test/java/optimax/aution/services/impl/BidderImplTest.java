@@ -6,24 +6,18 @@
 package optimax.aution.services.impl;
 
 import optimax.aution.models.Player;
-import optimax.aution.services.Bidder;
 import optimax.aution.services.GameContext;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import static org.junit.Assert.*;
-import static org.hamcrest.MatcherAssert.*;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import optimax.aution.Application;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  *
  * @author obinna.asuzu
  */
-@RunWith(SpringRunner.class)
+@SpringBootTest
 public class BidderImplTest {
 
     @Autowired
@@ -37,20 +31,20 @@ public class BidderImplTest {
     public BidderImplTest() {
     }
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() {
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
         instance.init(quantity, cash);
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
     }
 
