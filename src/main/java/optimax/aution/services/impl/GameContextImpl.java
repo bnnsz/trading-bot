@@ -171,4 +171,9 @@ public class GameContextImpl implements GameContext {
         return getTarget() - p.getQu() <= 2;
     }
 
+    @Override
+    public int incrementRound() {
+        return this.round.incrementAndGet();
+    }
+
 }

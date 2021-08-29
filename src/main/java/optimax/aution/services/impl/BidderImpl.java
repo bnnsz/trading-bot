@@ -38,10 +38,12 @@ public class BidderImpl implements Bidder {
 
     @Override
     public int placeBid() {
-        return schemes.stream()
+        int bid = schemes.stream()
                 .map(s -> s.getBid())
                 .findFirst()
                 .orElse(0);
+        context.incrementRound();
+        return bid;
     }
 
     @Override

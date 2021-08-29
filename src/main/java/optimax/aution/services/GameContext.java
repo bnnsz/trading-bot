@@ -73,4 +73,6 @@ public interface GameContext {
 
     boolean wonOrDrawLast();
     
+    int incrementRound();
+    
 }
