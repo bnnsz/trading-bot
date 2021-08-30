@@ -7,7 +7,6 @@ package optimax.aution.services.impl;
 
 import optimax.aution.models.Player;
 import optimax.aution.services.GameContext;
-import optimax.aution.Application;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;

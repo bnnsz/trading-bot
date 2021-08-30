@@ -18,8 +18,8 @@ public class Player {
     private Integer balance;
     private Integer qu;
 
-    public Player(Integer quantity, Integer cash) {
-        this.qu = quantity;
+    public Player(Integer cash) {
+        this.qu = 0;
         balance = cash;
     }
 

@@ -24,6 +24,7 @@ public class BasicBidScheme implements BidScheme {
         if(context.hasReachedTarget(context.getMe())){
             return 0;
         }
+        
         if(context.isLeadingOrDraw() && context.isLastRound(context.getOther())){
             /**
              * Go all in, but if is a draw and the other goes all in and has more fund I loose

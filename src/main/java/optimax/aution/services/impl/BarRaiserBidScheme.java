@@ -24,7 +24,7 @@ public class BarRaiserBidScheme implements BidScheme {
     @Override
     public int getBid() {
         Player me = context.getMe();
-        int bid = me.getBalance() / (context.remaingRounds(me) * 2) ^ 2;
+        int bid = (me.getBalance() / (context.remaingRounds(me) * 2)) ^ 2;
         return bid < me.getBalance() ? bid : me.getBalance();
     }
 

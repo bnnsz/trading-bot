@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import optimax.aution.services.BidScheme;
 import optimax.aution.services.Bidder;
+import optimax.aution.services.GameContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +23,16 @@ import org.springframework.stereotype.Service;
 public class BidderImpl implements Bidder {
 
     @Autowired
-    GameContextImpl context;
+    private GameContext context;
+    
     @Autowired
     private List<BidScheme> schemes;
 
     @PostConstruct
     public void init() {
+        //sort by order
+        //0 has more priority.
+        //bid-scheme 0, bid-scheme 1, bid-scheme 2
         Collections.sort(schemes,(lhs,rhs) -> compare(lhs.getOrder(), rhs.getOrder()));
     }
 
@@ -38,10 +43,20 @@ public class BidderImpl implements Bidder {
 
     @Override
     public int placeBid() {
+        /**
+         * Each scheme places bid but we select the first positive bid<br>
+         * If there were no positive bids we automatically place a zero bid
+         */
         int bid = schemes.stream()
                 .map(s -> s.getBid())
+                .filter(b -> b >= 0)
                 .findFirst()
                 .orElse(0);
+        
+        /**
+         * We are keeping track of the number of round.<br>
+         * Helps with computing our bids
+         */
         context.incrementRound();
         return bid;
     }

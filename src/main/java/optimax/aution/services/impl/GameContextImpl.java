@@ -7,15 +7,15 @@ package optimax.aution.services.impl;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import optimax.aution.models.Player;
-import org.springframework.stereotype.Component;
 import optimax.aution.services.GameContext;
 import optimax.aution.services.BidScheme;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author obinna.asuzu
  */
-@Component
+@Service
 public class GameContextImpl implements GameContext {
 
     private Player me;
@@ -26,9 +26,9 @@ public class GameContextImpl implements GameContext {
     @Override
     public void init(int quantity, int cash) {
         round = new AtomicInteger(1);
-        target = ((quantity % 2) == 0) ? ((quantity / 2) + 1) : ((quantity + 1) / 2);
-        me = new Player(quantity, cash);
-        other = new Player(quantity, cash);
+        target = (quantity / 2) + 1;
+        me = new Player(cash);
+        other = new Player(cash);
     }
     
     @Override
